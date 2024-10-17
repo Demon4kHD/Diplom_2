@@ -46,12 +46,16 @@ def create_new_json_from_json(json_data: dict, not_crated: str=''):
             new_json[key] = json_data[key]
 
     return new_json
-some_method = requests.post(url=RegistrationData.REGISTRATION_URL,
-                            json={"email": "ertyyu@mail.ru", 'password': 'k62ewjwr12', "name": 'Victor'})
-some_method_json = some_method.json()
-token = some_method_json["accessToken"]
-some_method = requests.post(url=RegistrationData.REGISTRATION_URL,
-                            json={"email": "ertyyu@mail.ru", 'password': 'k62ewjwr12', "name": 'Victor'})
-method = requests.delete(url=RegistrationData.DELETE_URL,
-                         headers={"authorization": f'{token}'})
-print(method.status_code)
+
+# some_method = requests.post(url=RegistrationData.REGISTRATION_URL,
+#                             json={"email": "ertyyu@mail.ru", 'password': 'k62ewjwr12', "name": 'Victor'})
+# some_method_json = some_method.json()
+# token = some_method_json["accessToken"]
+# print(token)
+# some_method = requests.post(url=AuthorizationData.AUTHORIZATION_URL,
+#                             json={"email": "ertyyu@mail.ru", 'password': 'k62ewjwr12'})
+# some_method_json = some_method.json()
+# token = some_method_json["accessToken"]
+# method = requests.delete(url=RegistrationData.DELETE_URL,
+#                          headers={"authorization": f'{token}'})
+# print(method.status_code)

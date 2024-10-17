@@ -1,7 +1,11 @@
+from http.client import responses
+
 
 class BaseMethod:
     response = None
-    response_json = None
+    token = ''
+    request_json = {}
+    refresh_token = ''
 
     def get_json(self):
         return self.response.json()
