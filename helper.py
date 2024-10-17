@@ -3,6 +3,7 @@ import random
 import requests
 
 from data_endpoint.authorization_data import AuthorizationData
+from data_endpoint.changing_user_data import ChangingUserData
 from data_endpoint.registration_data import RegistrationData
 
 
@@ -17,6 +18,7 @@ def create_request_json_for_test(body=dict, params=list, not_created=None):
             continue
 
     return created_object
+
 
 def create_data_for_test(type_obj=None, len_data=8, special_symbol=None):
     symbols_for_created_object = 'abcdefghijklmnopqrstuvwxyz0123456789'
@@ -37,7 +39,8 @@ def create_data_for_test(type_obj=None, len_data=8, special_symbol=None):
 
     return created_object
 
-def create_new_json_from_json(json_data: dict, not_crated: str=''):
+
+def create_new_json_from_json(json_data: dict, not_crated: str = ''):
     new_json = {}
     for key in json_data:
         if key == not_crated or key == 'name':
@@ -47,15 +50,24 @@ def create_new_json_from_json(json_data: dict, not_crated: str=''):
 
     return new_json
 
-# some_method = requests.post(url=RegistrationData.REGISTRATION_URL,
-#                             json={"email": "ertyyu@mail.ru", 'password': 'k62ewjwr12', "name": 'Victor'})
-# some_method_json = some_method.json()
-# token = some_method_json["accessToken"]
+
+requests.post(url=RegistrationData.REGISTRATION_URL,
+              json={"email": "e2rtyyu@mail.ru",
+                    "password": "k262ewjwr12",
+                    "name": "Victor"})
+some_method = requests.post(url=AuthorizationData.AUTHORIZATION_URL,
+                            json={"email": "e2rtyyu@mail.ru",
+                                  'password': 'k262ewjwr12'})
+some_method_json = some_method.json()
+token = some_method_json["accessToken"]
+print(some_method.status_code)
 # print(token)
-# some_method = requests.post(url=AuthorizationData.AUTHORIZATION_URL,
-#                             json={"email": "ertyyu@mail.ru", 'password': 'k62ewjwr12'})
-# some_method_json = some_method.json()
-# token = some_method_json["accessToken"]
-# method = requests.delete(url=RegistrationData.DELETE_URL,
-#                          headers={"authorization": f'{token}'})
-# print(method.status_code)
+some_method = requests.patch(url=ChangingUserData.CHANGING_USER_ENDPOINT_URL,
+                             headers={"Authorization": f'{token}'},
+                             json={
+                                      "email": "artyyu@mail.ru",
+                                     "password": "ak62ewjwr12"})
+print(some_method.status_code)
+method = requests.delete(url=RegistrationData.DELETE_URL,
+                         headers={"authorization": f'{token}'})
+print(method.status_code)
