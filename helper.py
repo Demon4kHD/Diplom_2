@@ -50,6 +50,21 @@ def create_new_json_from_json(json_data: dict, not_crated: str = ''):
 
     return new_json
 
+def creating_changeable_object(request_json: dict, is_witch_changed: list=[]):
+    new_json = {}
+    for key in request_json:
+        if key in is_witch_changed:
+            new_json[key] = create_data_for_test(type_obj=key, len_data=10)
+        else:
+            continue
+
+    return new_json
+
+def get_json_from_some_users_data(request_json):
+    new_json = {}
+    new_json['email'] = request_json["email"]
+
+    return new_json
 
 requests.post(url=RegistrationData.REGISTRATION_URL,
               json={"email": "e2rtyyu@mail.ru",
@@ -64,9 +79,7 @@ print(some_method.status_code)
 # print(token)
 some_method = requests.patch(url=ChangingUserData.CHANGING_USER_ENDPOINT_URL,
                              headers={"Authorization": f'{token}'},
-                             json={
-                                      "email": "artyyu@mail.ru",
-                                     "password": "ak62ewjwr12"})
+                             json={"email": "e2rtyyu@mail.ru"})
 print(some_method.status_code)
 method = requests.delete(url=RegistrationData.DELETE_URL,
                          headers={"authorization": f'{token}'})
