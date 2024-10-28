@@ -1,3 +1,4 @@
+import allure
 import requests
 from endpoints.authorization_endpoint import AuthorizationMethod as AM
 from data_endpoint.authorization_data import AuthorizationData as AD
@@ -6,8 +7,7 @@ from helper import creating_changeable_object, create_new_json_from_json
 
 
 class ChangingUserMethod(AM):
-
-
+    @allure.step('Изменение данных пользователя')
     def changing_user_data(self, selected_authorization=False, is_witch_changed=[], existing_json={}):
         token = AM.token
         if selected_authorization == True:

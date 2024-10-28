@@ -1,4 +1,7 @@
-class AuthorizationData:
+from data_endpoint.registration_data import RegistrationData as RD
+
+
+class AuthorizationData(RD):
     AUTHORIZATION_URL = 'https://stellarburgers.nomoreparties.site/api/auth/login'
     AUTHORIZATION_BODY = {"email": "",
                           "password": ""}
