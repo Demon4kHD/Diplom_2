@@ -1,0 +1,1 @@
+{"uuid": "8b98e074-0de5-47d1-978a-c03875b73dec", "children": ["97617d8c-e1a4-4c1d-8403-304918d20ae9"], "befores": [{"name": "create_burger", "status": "passed", "steps": [{"name": "Создание объекта burger", "status": "passed", "start": 1730050571937, "stop": 1730050571937}], "start": 1730050571937, "stop": 1730050571937}], "start": 1730050571937, "stop": 1730050573858}
